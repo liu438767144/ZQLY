@@ -1,0 +1,26 @@
+<ion-content no-padding>
+  <div class="background-image"></div>
+  <div class="content">
+    <ion-grid>
+      <ion-row col-10 >
+        <p class="title">中乾立源</p>
+      </ion-row>
+    </ion-grid>
+
+    <form (ngSubmit)="login()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>账号</ion-label>
+          <ion-input type="text" [(ngModel)]="loginInput.username" name="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>密码</ion-label>
+          <ion-input type="password" [(ngModel)]="loginInput.password" name="password"></ion-input>
+        </ion-item>
+        
+        <button ion-button block type="submit" class="btn_login">登陆</button>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
