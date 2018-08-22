@@ -1,3 +1,13 @@
-<ion-content padding>
-    <ion-searchbar placeholder="搜索"></ion-searchbar>
+<ion-header>
+  <ion-navbar>
+    <ion-title>人员查询</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+  <staff-item></staff-item>
 </ion-content>

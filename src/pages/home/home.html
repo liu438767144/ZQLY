@@ -1,8 +1,5 @@
 <ion-content no-padding>
-    <ion-tabs tabs-only tabsLayout="icon-top">
-        <ion-tab tabTitle="人员查询" tabIcon="person" [root]="StaffRoot"></ion-tab>
-        <ion-tab tabTitle="项目查询" tabIcon="clipboard" [root]="ProjectRoot"></ion-tab>
-        <ion-tab tabTitle="生日提醒" tabIcon="alarm" [root]="BirthdayRoot"></ion-tab>
-        <ion-tab tabTitle="个人中心" tabIcon="settings" [root]="PersonalRoot"></ion-tab>
-    </ion-tabs>
+  <<ion-tabs #myTabs tabs-only tabsLayout="icon-top">
+    <ion-tab *ngFor="let tabRoot of tabRoots" [root]="tabRoot.root" tabTitle="{{tabRoot.tabTitle}}" tabIcon="{{tabRoot.tabIcon}}"></ion-tab>
+  </ion-tabs>
 </ion-content>

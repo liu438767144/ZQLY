@@ -11,6 +11,9 @@ import { LoginPage } from '../pages/login/login';
 import { ProjectPage } from '../pages/project/project';
 import { BirthdayPage } from '../pages/birthday/birthday';
 import { PersonalPage } from '../pages/personal/personal';
+import { StaffItemComponent } from '../components/staff-item/staff-item';
+import { ProjectItemComponent } from '../components/project-item/project-item';
+import { BackButtonProvider } from '../providers/back-button/back-button';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { PersonalPage } from '../pages/personal/personal';
     StaffPage,
     ProjectPage,
     BirthdayPage,
-    PersonalPage
+    PersonalPage,
+    StaffItemComponent,
+    ProjectItemComponent
   ],
   imports: [
     BrowserModule,
@@ -34,12 +39,15 @@ import { PersonalPage } from '../pages/personal/personal';
     StaffPage,
     ProjectPage,
     BirthdayPage,
-    PersonalPage
+    PersonalPage,
+    StaffItemComponent,
+    ProjectItemComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BackButtonProvider
   ]
 })
 export class AppModule {}

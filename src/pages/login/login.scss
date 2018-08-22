@@ -1,46 +1,11 @@
 page-login {
-    .background-image {
-        position: fixed;
-        left: 0px;
-        right: 0px;
-        display: block;
-        background-image: url('../assets/imgs/login.jpg');
-        background-attachment: fixed;
-        background-repeat: round;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-
-        // 图片可视效果设置
-        filter: 
-        blur(2px);//设置高斯模糊
-        opacity: 1;//转化图像的透明程度
-        z-index: 0;//元素的堆叠顺序
-    }
-
-    .content {
-        position: fixed;
-        left: 0px;
-        right: 0px;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-    }
-
-    .title {
-        margin-top: 25%;
-        color: white;
-        font-size: 30px;
-        font-family: NotoSansHans-Medium;
-    }
-
-    form * {
-        background-color: transparent !important;
-        color: #FFFFFF !important;
-    }
-
-    .btn_login {
-        background-color: lightskyblue !important;
-        margin-top: 20px;
-    }
+  ion-title {
+    color: black;
+    font-size: 30px;
+    font-family: NotoSansHans-Medium;
+    text-align: center;
+  }
+  form {
+    margin-top: 20%;
+  }
 }
