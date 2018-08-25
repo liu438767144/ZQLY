@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Alert, LoadingController, ModalController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, Platform, LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { BackButtonProvider } from '../../providers/back-button/back-button';
+import { PageBase } from '../page-base';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,7 +16,7 @@ import { BackButtonProvider } from '../../providers/back-button/back-button';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage extends PageBase {
 
   loginInput: loginIput;
 
@@ -23,10 +24,11 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertController: AlertController,
-    public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController,
     public backButtonProvider: BackButtonProvider,
-    private platform: Platform) {
+    public platform: Platform) {
+    super(alertController);
     this.loginInput = new loginIput();
     this.platform.ready().then(() => {
       this.backButtonProvider.registerBackButtonAction(null);
@@ -39,15 +41,14 @@ export class LoginPage {
 
   //登录验证
   login() {
-
     let loader = this.loadingCtrl.create({
-      content: "正在验证"
+      content: "正在验证..."
     });
     loader.present();
 
     if (this.loginInput.username == "admin" && this.loginInput.password == "123456") {
-      loader.dismiss();
       // this.navCtrl.push(HomePage);
+      loader.dismiss();
       let modal = this.modalCtrl.create(HomePage);
       modal.present();
     } else {
@@ -55,17 +56,6 @@ export class LoginPage {
       this.showAlert('错误', '登录失败，请重试');
       this.loginInput = new loginIput();
     }
-  }
-
-  //错误提示
-  public showAlert(title: string, subTitle: string): Alert {
-    let alert = this.alertController.create({
-      title: title,
-      subTitle: subTitle,
-      buttons: ['OK']
-    });
-    alert.present();
-    return alert;
   }
 }
 

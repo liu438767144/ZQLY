@@ -11,22 +11,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-staff',
-  templateUrl: 'staff.html'
+  templateUrl: 'staff.html',
 })
-export class StaffPage {
+export class StaffPage{
 
   queryText = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StaffPage');
     this.updateSchedule();
+
   }
 
   updateSchedule() {
     console.log(this.queryText);
   }
+
+  
 
 }

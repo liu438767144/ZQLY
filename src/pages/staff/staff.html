@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content no-padding>
+
   <ion-toolbar no-border-top>
-    <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="Search">
+    <ion-searchbar [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="搜索">
     </ion-searchbar>
   </ion-toolbar>
+
   <staff-item></staff-item>
+  
 </ion-content>

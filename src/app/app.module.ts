@@ -12,8 +12,9 @@ import { ProjectPage } from '../pages/project/project';
 import { BirthdayPage } from '../pages/birthday/birthday';
 import { PersonalPage } from '../pages/personal/personal';
 import { StaffItemComponent } from '../components/staff-item/staff-item';
-import { ProjectItemComponent } from '../components/project-item/project-item';
 import { BackButtonProvider } from '../providers/back-button/back-button';
+import { StaffDetailComponent } from '../components/staff-detail/staff-detail';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -25,11 +26,12 @@ import { BackButtonProvider } from '../providers/back-button/back-button';
     BirthdayPage,
     PersonalPage,
     StaffItemComponent,
-    ProjectItemComponent
+    StaffDetailComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +43,7 @@ import { BackButtonProvider } from '../providers/back-button/back-button';
     BirthdayPage,
     PersonalPage,
     StaffItemComponent,
-    ProjectItemComponent
+    StaffDetailComponent
   ],
   providers: [
     StatusBar,

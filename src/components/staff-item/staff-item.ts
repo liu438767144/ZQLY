@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { PageBase } from '../../pages/page-base';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
+import { Http, Response } from '@angular/http';
+import { StaffDetailComponent } from '../staff-detail/staff-detail';
+
 
 /**
  * Generated class for the StaffItemComponent component.
@@ -10,20 +15,37 @@ import { Component } from '@angular/core';
   selector: 'staff-item',
   templateUrl: 'staff-item.html'
 })
-export class StaffItemComponent {
+export class StaffItemComponent extends PageBase {
 
-  items: Array<{number: string, name: string, department: string}>;
+  // 接收数据用
+  listData: Object;
+  path: string = 'http://jsonplaceholder.typicode.com/users'
 
-  constructor() {
+  constructor(
+    private navctrl: NavController,
+    public alertController: AlertController,
+    public loadingCtrl: LoadingController,
+    private http: Http) {
+    super(alertController);
     console.log('Hello StaffItemComponent Component');
-    this.items = [];
-    for (let i = 0; i < 10; i++) {
-      this.items.push({
-        number: 'NO.' + i,
-        name: 'TOM' + i,
-        department: "宣传部"
-      });
-    }
+    this.getData();
   }
 
+  getData() {
+    let loader = this.loadingCtrl.create({
+      content: "正在加载数据"
+    });
+    loader.present();
+
+    // 网络请求
+    this.http.request(this.path)
+      .subscribe((res: Response) => {
+        loader.dismiss();
+        this.listData = res.json();
+      });
+  }
+
+  itemClick() {
+    this.navctrl.push(StaffDetailComponent);
+  }
 }

@@ -1,21 +1,10 @@
 <!-- Generated template for the StaffItemComponent component -->
-<ion-content no-padding>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-row>
-        <ion-col>
-          <div>{{item.number}}</div>
-        </ion-col>
-
-        <ion-col>
-          <div>{{item.name}}</div>
-        </ion-col>
-
-        <ion-col>
-          <div>{{item.department}}</div>
-        </ion-col>
-
-      </ion-row>
-    </ion-item>
+<ion-content padding>
+  <ion-list *ngFor="let item of listData">
+    <button ion-item (click)="itemClick()">
+      <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+      <ion-label>{{item?.name}}</ion-label>
+      <ion-note item-end>{{item?.company.name}}</ion-note>
+    </button>
   </ion-list>
 </ion-content>
