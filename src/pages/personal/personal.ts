@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController}  from 'ionic-angular';
-import { LoginPage } from '../login/login';
+import { IonicPage, NavParams, ModalController, Events}  from 'ionic-angular';
 /**
  * Generated class for the PersonalPage page.
  *
@@ -16,9 +15,9 @@ import { LoginPage } from '../login/login';
 export class PersonalPage {
 
   constructor(
-    public navCtrl: NavController, 
     public navParams: NavParams,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    public events: Events) {
   }
 
   ionViewDidLoad() {
@@ -26,7 +25,8 @@ export class PersonalPage {
   }
 
   logout(): void {
-    let modal = this.modalCtrl.create(LoginPage);
-    modal.present();
+    // let modal = this.modalCtrl.create('LoginPage');
+    // modal.present();
+    this.events.publish('toLogin');
   }
 }

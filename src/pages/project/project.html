@@ -2,8 +2,17 @@
   <ion-navbar>
     <ion-title>项目查询</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar [(ngModel)]="queryText" (ionInput)="getItems($event)" placeholder="搜索"></ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content no-padding>
-  <ion-searchbar placeholder="搜索"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,6 +1,6 @@
 import { AlertController, Alert } from 'ionic-angular';
 
-export class PageBase {
+export class PageUtils {
   constructor(protected alertController: AlertController) {
   }
 

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController, Platform, LoadingController } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { AlertController, IonicPage, LoadingController, ModalController, NavController, NavParams, Platform } from 'ionic-angular';
 import { BackButtonProvider } from '../../providers/back-button/back-button';
-import { PageBase } from '../page-base';
+import { PageUtils } from '../pageUtils';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,7 +15,7 @@ import { PageBase } from '../page-base';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage extends PageBase {
+export class LoginPage extends PageUtils {
 
   loginInput: loginIput;
 
@@ -42,18 +41,18 @@ export class LoginPage extends PageBase {
   //登录验证
   login() {
     let loader = this.loadingCtrl.create({
-      content: "正在验证..."
+      content: "正在登录..."
     });
     loader.present();
 
     if (this.loginInput.username == "admin" && this.loginInput.password == "123456") {
-      // this.navCtrl.push(HomePage);
       loader.dismiss();
-      let modal = this.modalCtrl.create(HomePage);
-      modal.present();
+      this.navCtrl.push('HomePage');
+      // let modal = this.modalCtrl.create('HomePage');
+      // modal.present();
     } else {
       loader.dismiss();
-      this.showAlert('错误', '登录失败，请重试');
+      this.showAlert('失败', '账号或密码错误，请重试');
       this.loginInput = new loginIput();
     }
   }

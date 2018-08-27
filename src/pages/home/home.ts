@@ -1,11 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Tabs, Platform } from 'ionic-angular';
-import { StaffPage } from '../staff/staff';
-import { ProjectPage } from '../project/project';
-import { BirthdayPage } from '../birthday/birthday';
-import { PersonalPage } from '../personal/personal';
+import { Tabs, Platform, IonicPage, NavController, Events } from 'ionic-angular';
 import { BackButtonProvider } from '../../providers/back-button/back-button';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -13,29 +10,37 @@ import { BackButtonProvider } from '../../providers/back-button/back-button';
 export class HomePage {
   @ViewChild('myTabs') tabRef: Tabs;
 
+  //设置懒加载界面
+  StaffPageRoot: any = 'StaffPage';
+  ProjectPageRoot: any = 'ProjectPage';
+  BirthdayPageRoot: any = 'BirthdayPage';
+  PersonalPageRoot: any = 'PersonalPage';
+
   tabRoots: Object[];
 
   constructor(
+    public navCtrl: NavController,
     public backButtonProvider: BackButtonProvider,
-    public platform: Platform) {
+    public platform: Platform,
+    public events: Events) {
     this.tabRoots = [
       {
-        root: StaffPage,
+        root: this.StaffPageRoot,
         tabTitle: '人员查询',
         tabIcon: 'people'
       },
       {
-        root: ProjectPage,
+        root: this.ProjectPageRoot,
         tabTitle: '项目查询',
         tabIcon: 'pricetags'
       },
       {
-        root: BirthdayPage,
+        root: this.BirthdayPageRoot,
         tabTitle: '生日提醒',
         tabIcon: 'notifications'
       },
       {
-        root: PersonalPage,
+        root: this.PersonalPageRoot,
         tabTitle: '个人中心',
         tabIcon: 'person'
       }
@@ -43,6 +48,23 @@ export class HomePage {
 
     this.platform.ready().then(() => {
       this.backButtonProvider.registerBackButtonAction(this.tabRef);
+    });
+  }
+
+  ionViewDidLoad() {
+    this.listenEvents();
+    console.log('界面创建');
+  }
+
+  ionViewWillUnload() {
+    this.events.unsubscribe('toLogin');
+    console.log('界面销毁');
+  }
+
+  listenEvents() {
+    this.events.subscribe('toLogin', () => {
+      this.navCtrl.setRoot('LoginPage');
+      console.log('返回登录');
     });
   }
 }

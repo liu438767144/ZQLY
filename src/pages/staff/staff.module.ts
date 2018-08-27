@@ -7,7 +7,7 @@ import { StaffPage } from './staff';
     StaffPage,
   ],
   imports: [
-    IonicPageModule.forChild(StaffPage)
+    IonicPageModule.forChild(StaffPage),
   ],
 })
 export class StaffPageModule {}

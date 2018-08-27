@@ -50,13 +50,13 @@ export class BackButtonProvider {
       //第一次按，弹出Toast
       this.toastCtrl.create({
         message: '再按一次退出应用',
-        duration: 2000,
+        duration: 1000,
         position: 'bottom'
       }).present();
       //标记为true
       this.backButtonPressed = true;
-      //两秒后标记为false，如果退出的话，就不会执行了
-      setTimeout(() => this.backButtonPressed = false, 2000);
+      //1秒后标记为false，如果退出的话，就不会执行了
+      setTimeout(() => this.backButtonPressed = false, 1000);
     }
   }
 

@@ -10,4 +10,4 @@ import { BirthdayPage } from './birthday';
     IonicPageModule.forChild(BirthdayPage),
   ],
 })
-export class BirthdayPageModule {}
+export class BirthdayPageModule { }

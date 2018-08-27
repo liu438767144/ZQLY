@@ -1,0 +1,54 @@
+<!--
+  Generated template for the StaffDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+      <ion-label>员工姓名:</ion-label>
+      <ion-note item-end>{{item?.name}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-transgender" item-start color="primary"></ion-icon>
+      <ion-label>性别：</ion-label>
+      <ion-note item-end>{{item?.username}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-calendar" item-start color="primary"></ion-icon>
+      <ion-label>出生日期：</ion-label>
+      <ion-note item-end>{{item?.website}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-git-branch" item-start color="primary"></ion-icon>
+      <ion-label>所属部门：</ion-label>
+      <ion-note item-end>{{company?.name}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-mail" item-start color="primary"></ion-icon>
+      <ion-label>Email：</ion-label>
+      <ion-note item-end>{{item?.email}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-call" item-start color="primary"></ion-icon>
+      <ion-label>电话号码：</ion-label>
+      <ion-note item-end>{{item?.phone}}</ion-note>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+

@@ -2,15 +2,19 @@
   <ion-navbar>
     <ion-title>人员查询</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar [(ngModel)]="queryText" (ionInput)="searchInput($event)" placeholder="搜索"></ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content no-padding>
-
-  <ion-toolbar no-border-top>
-    <ion-searchbar [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="搜索">
-    </ion-searchbar>
-  </ion-toolbar>
-
-  <staff-item></staff-item>
-  
+  <ion-list *ngFor="let item of listData">
+    <button ion-item (click)="itemClick(item)">
+      <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+      <ion-label>{{item?.name}}</ion-label>
+      <ion-note item-end>{{item?.company.name}}</ion-note>
+    </button>
+  </ion-list>
 </ion-content>

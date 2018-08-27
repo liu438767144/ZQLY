@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { Http, Response } from '@angular/http';
 
 /**
  * Generated class for the StaffPage page.
@@ -13,25 +14,46 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-staff',
   templateUrl: 'staff.html',
 })
-export class StaffPage{
+export class StaffPage {
 
-  queryText = '';
+  // 接收数据用
+  listData: Object[];
+  path: string = 'http://jsonplaceholder.typicode.com/users'
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public alertController: AlertController,
+    public loadingCtrl: LoadingController,
+    private http: Http) {
+    this.loadData();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StaffPage');
-    this.updateSchedule();
-
   }
 
-  updateSchedule() {
-    console.log(this.queryText);
+  searchInput(event: any) {
   }
 
-  
+  loadData() {
+    let loader = this.loadingCtrl.create({
+      content: "正在加载数据"
+    });
+    loader.present();
+
+    // 网络请求
+    this.http.request(this.path)
+      .subscribe((res: Response) => {
+        loader.dismiss();
+        this.listData = res.json();
+        console.log(this.listData);
+      });
+  }
+
+  itemClick(item: Object) {
+    console.log(item);
+    this.navCtrl.push('StaffDetailPage', item);
+  }
 
 }
