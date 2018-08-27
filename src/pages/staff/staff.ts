@@ -17,7 +17,7 @@ import { Http, Response } from '@angular/http';
 export class StaffPage {
 
   // 接收数据用
-  listData: Object[];
+  listData: Object;
   path: string = 'http://jsonplaceholder.typicode.com/users'
 
   constructor(

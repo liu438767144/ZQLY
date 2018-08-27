@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, IonicPage, LoadingController, ModalController, NavController, NavParams, Platform } from 'ionic-angular';
 import { BackButtonProvider } from '../../providers/back-button/back-button';
 import { PageUtils } from '../pageUtils';
+import { Storage } from '@ionic/Storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -18,6 +19,7 @@ import { PageUtils } from '../pageUtils';
 export class LoginPage extends PageUtils {
 
   loginInput: loginIput;
+  isRemember: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -26,7 +28,8 @@ export class LoginPage extends PageUtils {
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public backButtonProvider: BackButtonProvider,
-    public platform: Platform) {
+    public platform: Platform,
+    public stotage: Storage) {
     super(alertController);
     this.loginInput = new loginIput();
     this.platform.ready().then(() => {
@@ -47,7 +50,13 @@ export class LoginPage extends PageUtils {
 
     if (this.loginInput.username == "admin" && this.loginInput.password == "123456") {
       loader.dismiss();
-      this.navCtrl.push('HomePage');
+      // 记录用户是否记住密码
+      let data = { username: this.loginInput.username, password: this.loginInput.password, isRemember: this.isRemember };
+      // 储存用户信息
+      // this.stotage.remove("USER_INFO");
+      this.stotage.set("USER_INFO", JSON.stringify(data));
+      // 界面跳转
+      this.navCtrl.setRoot('HomePage', data);
       // let modal = this.modalCtrl.create('HomePage');
       // modal.present();
     } else {

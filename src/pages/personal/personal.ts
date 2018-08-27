@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ModalController, Events}  from 'ionic-angular';
+import { IonicPage, NavParams, ModalController, Events } from 'ionic-angular';
 /**
  * Generated class for the PersonalPage page.
  *
