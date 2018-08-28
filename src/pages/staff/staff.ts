@@ -20,20 +20,45 @@ export class StaffPage {
   listData: Object;
   path: string = 'http://jsonplaceholder.typicode.com/users'
 
+  //搜索
+  searchData: string[] = [];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertController: AlertController,
     public loadingCtrl: LoadingController,
     private http: Http) {
-    this.loadData();
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StaffPage');
+    this.loadData();
+  }
+
+  initializeItems() {
+    for (let i in this.listData) {
+      console.log(i);
+      this.searchData.push(this.listData[i].name);
+      // console.log(this.listData[i].name);
+      // console.log(this.searchData[i]);
+    }
   }
 
   searchInput(event: any) {
+    //Reset items back to all of the items
+    this.initializeItems();
+
+    //set val to the value of the searchbar
+    let val = event.target.value;
+
+    //if the value is an empty string dont`t filter the items
+    if (val && val.trim() != '') {
+      this.searchData = this.searchData.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   loadData() {
@@ -47,7 +72,8 @@ export class StaffPage {
       .subscribe((res: Response) => {
         loader.dismiss();
         this.listData = res.json();
-        console.log(this.listData);
+        this.initializeItems();
+        // console.log(this.listData);
       });
   }
 

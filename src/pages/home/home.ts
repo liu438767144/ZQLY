@@ -10,12 +10,6 @@ import { BackButtonProvider } from '../../providers/back-button/back-button';
 export class HomePage {
   @ViewChild('myTabs') tabRef: Tabs;
 
-  //设置懒加载界面
-  StaffPageRoot: any = 'StaffPage';
-  ProjectPageRoot: any = 'ProjectPage';
-  BirthdayPageRoot: any = 'BirthdayPage';
-  PersonalPageRoot: any = 'PersonalPage';
-
   tabRoots: Object[];
 
   constructor(
@@ -25,22 +19,22 @@ export class HomePage {
     public events: Events) {
     this.tabRoots = [
       {
-        root: this.StaffPageRoot,
+        root: 'StaffPage',
         tabTitle: '人员查询',
         tabIcon: 'people'
       },
       {
-        root: this.ProjectPageRoot,
+        root: 'ProjectPage',
         tabTitle: '项目查询',
         tabIcon: 'pricetags'
       },
       {
-        root: this.BirthdayPageRoot,
+        root: 'BirthdayPage',
         tabTitle: '生日提醒',
         tabIcon: 'notifications'
       },
       {
-        root: this.PersonalPageRoot,
+        root: 'PersonalPage',
         tabTitle: '个人中心',
         tabIcon: 'person'
       }

@@ -1,11 +1,29 @@
 page-login {
-  ion-title {
+  .title {
     color: black;
     font-size: 30px;
     font-family: NotoSansHans-Medium;
     text-align: center;
-  }
-  .content {
     margin-top: 15%;
+  }
+  ion-list {
+    margin-top: 15% !important;
+  }
+  .input_item {
+    padding-right: 15px !important;
+  }
+  .btn_login {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .bottom_title {
+    color: gray;
+    font-size: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
   }
 }
