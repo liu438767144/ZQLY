@@ -30,7 +30,7 @@ export class LoginPage extends PageUtils {
     public backButtonProvider: BackButtonProvider,
     public platform: Platform,
     public stotage: Storage) {
-    super(alertController);
+    super(alertController,loadingCtrl);
     this.loginInput = new loginIput();
     this.platform.ready().then(() => {
       this.backButtonProvider.registerBackButtonAction(null);
@@ -44,7 +44,7 @@ export class LoginPage extends PageUtils {
   //登录验证
   login() {
     let loader = this.loadingCtrl.create({
-      content: "正在登录..."
+      content: "正在登录"
     });
     loader.present();
 
@@ -53,7 +53,7 @@ export class LoginPage extends PageUtils {
       // 记录用户是否记住密码
       let data = { username: this.loginInput.username, password: this.loginInput.password, isRemember: this.isRemember };
       // 储存用户信息
-      // this.stotage.remove("USER_INFO");
+      this.stotage.remove("USER_INFO");
       this.stotage.set("USER_INFO", JSON.stringify(data));
       // 界面跳转
       this.navCtrl.setRoot('HomePage', data);

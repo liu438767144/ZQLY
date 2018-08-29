@@ -7,7 +7,8 @@ import {IonicStorageModule} from '@ionic/Storage';
 
 import { MyApp } from './app.component';
 import { BackButtonProvider } from '../providers/back-button/back-button';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from "@angular/common/http";
+import { StaffProvider } from '../providers/staff/staff';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpModule
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BackButtonProvider
+    BackButtonProvider,
+    StaffProvider
   ]
 })
 export class AppModule {}

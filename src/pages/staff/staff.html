@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content no-padding>
-  <ion-list *ngFor="let item of listData">
+  <ion-list *ngFor="let item of staffProvider.staffData">
     <button ion-item (click)="itemClick(item)">
       <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
       <ion-label>{{item?.name}}</ion-label>

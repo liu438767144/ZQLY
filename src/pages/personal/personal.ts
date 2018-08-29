@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ModalController, Events } from 'ionic-angular';
+import { Storage } from '@ionic/Storage';
 /**
  * Generated class for the PersonalPage page.
  *
@@ -14,10 +15,20 @@ import { IonicPage, NavParams, ModalController, Events } from 'ionic-angular';
 })
 export class PersonalPage {
 
+  username: string;
+
   constructor(
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public events: Events) {
+    public events: Events,
+    public storage: Storage) {
+    storage.ready().then(() => {
+      storage.get('USER_INFO').then(
+        (value: string) => {
+          this.username = value ? JSON.parse(value).username : "";
+        }
+      );
+    });
   }
 
   ionViewDidLoad() {

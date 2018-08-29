@@ -6,13 +6,12 @@
   <ion-toolbar no-border-top>
     <ion-searchbar (ionInput)="getItems($event)" placeholder="搜索"></ion-searchbar>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content no-padding>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      {{ item }}
+      {{item}}
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Response } from '@angular/http';
+import { StaffProvider } from '../../providers/staff/staff';
+
 
 /**
  * Generated class for the ProjectPage page.
@@ -16,38 +17,27 @@ import { Http, Response } from '@angular/http';
 })
 export class ProjectPage {
 
-  // 接收数据用
-  listData: Object;
-  path: string = 'http://jsonplaceholder.typicode.com/users'
-
   //搜索
   items: string[];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private http: Http) {
+    public staffProvider: StaffProvider) {
+    this.initializeItems();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectPage');
-    // 网络请求
-    this.http.request(this.path)
-      .subscribe((res: Response) => {
-        this.listData = res.json();
-        this.initializeItems();
-        // console.log(this.listData);
-      });
   }
 
   initializeItems() {
     this.items = [];
-    for (let i in this.listData) {
-      this.items.push(this.listData[i].name);
-      // console.log(this.listData[i].name);
-      // console.log(this.items[i]);
+    for (let i in this.staffProvider.staffData) {
+      this.items.push(this.staffProvider.staffData[i].name);
+      console.log(this.items[i]);
     }
-    // let arr = Object.keys(this.listData);
+    // let arr = Object.keys(this.staffProvider.staffData);
     // for(let i = 0; i < arr.length; i++){
     //   this.items.push(this.listData[i].name);
     // }
@@ -56,10 +46,8 @@ export class ProjectPage {
   getItems(event: any) {
     //Reset items back to all of the items
     this.initializeItems();
-
     //set val to the value of the searchbar
     let val = event.target.value;
-
     //if the value is an empty string dont`t filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {

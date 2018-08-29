@@ -20,7 +20,7 @@ export class MyApp {
     storage.ready().then(() => {
       storage.get('USER_INFO').then(
         (value: string) => {
-          let isRemember = !!value ? JSON.parse(value).isRemember : false;
+          let isRemember = value ? JSON.parse(value).isRemember : false;
           if (isRemember) {
             this.rootPage = 'HomePage';
           } else {
