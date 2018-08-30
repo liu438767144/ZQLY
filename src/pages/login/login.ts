@@ -30,7 +30,7 @@ export class LoginPage extends PageUtils {
     public backButtonProvider: BackButtonProvider,
     public platform: Platform,
     public stotage: Storage) {
-    super(alertController,loadingCtrl);
+    super(alertController);
     this.loginInput = new loginIput();
     this.platform.ready().then(() => {
       this.backButtonProvider.registerBackButtonAction(null);

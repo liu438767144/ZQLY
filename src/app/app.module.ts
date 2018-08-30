@@ -8,7 +8,6 @@ import {IonicStorageModule} from '@ionic/Storage';
 import { MyApp } from './app.component';
 import { BackButtonProvider } from '../providers/back-button/back-button';
 import { HttpClientModule } from "@angular/common/http";
-import { StaffProvider } from '../providers/staff/staff';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { StaffProvider } from '../providers/staff/staff';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BackButtonProvider,
-    StaffProvider
   ]
 })
 export class AppModule {}

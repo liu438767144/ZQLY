@@ -1,10 +1,9 @@
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 export class PageUtils {
 
   constructor(
-    protected alertController: AlertController,
-    protected loadingCtrl: LoadingController) {
+    protected alertController: AlertController) {
   }
 
   protected showAlert(title: string, subTitle: string) {

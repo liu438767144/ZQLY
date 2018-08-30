@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { StaffProvider } from '../../providers/staff/staff';
-
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the ProjectPage page.
@@ -17,30 +16,46 @@ import { StaffProvider } from '../../providers/staff/staff';
 })
 export class ProjectPage {
 
-  //搜索
-  items: string[];
+  projectData: Object; // 保存接收的项目数据
+  projectItems: any[];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public staffProvider: StaffProvider) {
-    this.initializeItems();
+    public loadingCtrl: LoadingController,
+    public http: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectPage');
+    this.getprojectData();
   }
 
   initializeItems() {
-    this.items = [];
-    for (let i in this.staffProvider.staffData) {
-      this.items.push(this.staffProvider.staffData[i].name);
-      console.log(this.items[i]);
+    this.projectItems = [];
+    for (let i in this.projectData) {
+      this.projectItems.push(this.projectData[i]);
+      // console.log(this.projectItems[i]);
     }
     // let arr = Object.keys(this.staffProvider.staffData);
     // for(let i = 0; i < arr.length; i++){
     //   this.items.push(this.listData[i].name);
     // }
+  }
+
+  //获取项目信息
+  getprojectData() {
+    let loader = this.loadingCtrl.create({
+      content: "正在加载数据"
+    });
+    loader.present();
+    // 网络请求
+    let path: string = 'https://jsonplaceholder.typicode.com/albums';// 请求地址
+    this.http.get(path).subscribe(data => {
+      this.projectData = data;
+      this.initializeItems();
+      loader.dismiss();
+    });
   }
 
   getItems(event: any) {
@@ -50,8 +65,8 @@ export class ProjectPage {
     let val = event.target.value;
     //if the value is an empty string dont`t filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.projectItems = this.projectItems.filter((item) => {
+        return (item.title.indexOf(val) > -1);
       })
     }
   }
