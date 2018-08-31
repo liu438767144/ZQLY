@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>人员查询</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="搜索"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content no-padding>
+  <ion-list>
+    <ion-item *ngFor="let item of staffItems" (click)="itemClick(item)">
+      <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+      <ion-label>{{item?.name}}</ion-label>
+      <ion-note item-end>{{item?.company.name}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

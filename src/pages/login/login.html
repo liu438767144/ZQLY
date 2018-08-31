@@ -1,0 +1,34 @@
+<ion-content no-padding>
+  <div>
+    <div class="title">中乾立源</div>
+    <ion-list>
+      <ion-item class="input_item">
+        <ion-label>
+          <ion-icon item-left name="md-person" color="dark"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="loginInput.username" placeholder="账号" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="input_item">
+        <ion-label>
+          <ion-icon item-left name="md-key" color="dark"></ion-icon>
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="loginInput.password" placeholder="密码" background-color="light" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item no-lines>
+        <label item-right style="font-size: 12px;">记住账号</label>
+        <ion-toggle checked="false" [(ngModel)]="isRemember"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <div class="btn_login">
+      <button ion-button block icon-start (click)="login()">
+        <ion-icon name="ios-log-in"></ion-icon>
+        登录
+      </button>
+    </div>
+
+    <div class="bottom_title">Copyright © Wuhan University of Technology (WHUT)</div>
+  </div>
+</ion-content>
