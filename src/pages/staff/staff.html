@@ -12,7 +12,7 @@
 <ion-content no-padding>
   <ion-list>
     <ion-item *ngFor="let item of staffItems" (click)="itemClick(item)">
-      <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+      <ion-icon name="contact" item-start color="primary"></ion-icon>
       <ion-label>{{item?.name}}</ion-label>
       <ion-note item-end>{{item?.company.name}}</ion-note>
     </ion-item>

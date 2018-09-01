@@ -14,18 +14,18 @@ export class HttpServiceProvider {
 
   constructor(public http: HttpClient,
     public loadingCtrl: LoadingController) {
-    console.log('Hello HttpServiceProvider Provider');
+    console.log('Hello HttpServiceProvider');
   }
 
   // 获取人员信息
   getStaffData(): Observable<Object> {
-    let path: string = 'http://jsonplaceholder.typicode.com/users';// 请求地址
+    let path: string = 'http://jsonplaceholder.typicode.com/users';//人员请求地址
     return this.http.get(path);
   }
 
     //获取项目信息
     getprojectData(): Observable<Object> {
-      let path: string = 'https://jsonplaceholder.typicode.com/albums';// 请求地址
+      let path: string = 'https://jsonplaceholder.typicode.com/albums';//项目请求地址
       return this.http.get(path);
     }
 

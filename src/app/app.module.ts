@@ -16,7 +16,13 @@ import { HttpServiceProvider } from '../providers/http-service/http-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(
+      MyApp,
+      {
+        // mode: 'md',//在整个应用程序中使用的模式:"ios","md"
+        // iconMode: 'md',//图标显示模式
+      }
+    ),
     IonicStorageModule.forRoot(),
     HttpClientModule
   ],

@@ -18,8 +18,8 @@ import { PageUtils } from '../pageUtils';
 })
 export class StaffPage extends PageUtils {
 
-  staffItems: any;
-  staffData: Object;//保存接收的人员数据
+  staffData: Object;
+  staffItems: any; //保存接收的人员数据
 
   constructor(
     public navCtrl: NavController,
@@ -39,35 +39,31 @@ export class StaffPage extends PageUtils {
 
   //获取网路请求中的数据
   init() {
-    this.httpServiceProvider.getStaffData().subscribe(staffData => {
-      this.staffData = staffData;
-      this.initializeItems();
+    this.httpServiceProvider.getStaffData().subscribe(data => {
+      this.staffData = data;
+      this.initItems();
     });
   }
 
   //初始化显示列表
-  initializeItems() {
-    this.staffItems = [];
-    for (let i in this.staffData) {
-      this.staffItems.push(this.staffData[i]);
-      // console.log(this.staffItems[i]);
-    }
-    // let arr = Object.keys(this.staffProvider.staffData);
-    // for(let i = 0; i < arr.length; i++){
-    //   this.items.push(this.listData[i].name);
+  initItems() {
+    this.staffItems = this.staffData;
+    // for (let i in this.staffData) {
+    //   this.staffItems.push(this.staffData[i]);
+    //   // console.log(this.staffItems[i]);
     // }
   }
 
   //列表点击事件
   itemClick(item: Object) {
-    console.log(item);
+    // console.log(item);
     this.navCtrl.push('StaffDetailPage', item);
   }
 
   //搜索
   getItems(event: any) {
     //初始化所有数据
-    this.initializeItems();
+    this.initItems();
     //获取搜索框输入中的值
     let val = event.target.value;
     //搜索框为空时不匹配数据

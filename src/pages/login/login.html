@@ -4,14 +4,14 @@
     <ion-list>
       <ion-item class="input_item">
         <ion-label>
-          <ion-icon item-left name="md-person" color="dark"></ion-icon>
+          <ion-icon item-left name="person" color="dark"></ion-icon>
         </ion-label>
         <ion-input type="text" [(ngModel)]="loginInput.username" placeholder="账号" clearInput></ion-input>
       </ion-item>
 
       <ion-item class="input_item">
         <ion-label>
-          <ion-icon item-left name="md-key" color="dark"></ion-icon>
+          <ion-icon item-left name="key" color="dark"></ion-icon>
         </ion-label>
         <ion-input type="password" [(ngModel)]="loginInput.password" placeholder="密码" background-color="light" clearInput></ion-input>
       </ion-item>
@@ -24,7 +24,7 @@
 
     <div class="btn_login">
       <button ion-button block icon-start (click)="login()">
-        <ion-icon name="ios-log-in"></ion-icon>
+        <ion-icon name="log-in"></ion-icon>
         登录
       </button>
     </div>

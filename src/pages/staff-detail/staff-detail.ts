@@ -24,8 +24,6 @@ export class StaffDetailPage {
     //获取并解析从 StaffPage 传过来的数据
     this.item = this.navParams.data;
     this.company = this.navParams.data.company;
-    console.log(this.item);
-    console.log(this.company);
   }
 
   ionViewDidLoad() {

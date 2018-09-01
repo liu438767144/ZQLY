@@ -40,29 +40,25 @@ export class ProjectPage extends PageUtils {
 
   //获取网路请求中的数据
   init() {
-    this.httpServiceProvider.getprojectData().subscribe(projectData => {
-      this.projectData = projectData;
-      this.initializeItems();
+    this.httpServiceProvider.getprojectData().subscribe(data => {
+      this.projectData = data;
+      this.initItems();
     });
   }
 
   //初始化显示列表
-  initializeItems() {
-    this.projectItems = [];
-    for (let i in this.projectData) {
-      this.projectItems.push(this.projectData[i]);
-      // console.log(this.projectItems[i]);
-    }
-    // let arr = Object.keys(this.staffProvider.staffData);
-    // for(let i = 0; i < arr.length; i++){
-    //   this.items.push(this.listData[i].name);
+  initItems() {
+    this.projectItems = this.projectData;
+    // for (let i in this.projectData) {
+    //   this.projectItems.push(this.projectData[i]);
+    //   // console.log(this.projectItems[i]);
     // }
   }
 
   //搜索
   getItems(event: any) {
     //初始化所有数据
-    this.initializeItems();
+    this.initItems();
     //获取搜索框输入中的值
     let val = event.target.value;
     //搜索框为空时不匹配数据

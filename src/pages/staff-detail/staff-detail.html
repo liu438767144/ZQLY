@@ -13,42 +13,46 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-icon name="ios-contact" item-start color="primary"></ion-icon>
+      <ion-icon name="contact" item-start color="primary"></ion-icon>
       <ion-label>员工姓名:</ion-label>
       <ion-note item-end>{{item?.name}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="ios-transgender" item-start color="primary"></ion-icon>
+      <ion-icon name="transgender" item-start color="primary"></ion-icon>
       <ion-label>性别：</ion-label>
       <ion-note item-end>{{item?.username}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="ios-calendar" item-start color="primary"></ion-icon>
+      <ion-icon name="calendar" item-start color="primary"></ion-icon>
       <ion-label>出生日期：</ion-label>
       <ion-note item-end>{{item?.website}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="ios-git-branch" item-start color="primary"></ion-icon>
+      <ion-icon name="git-branch" item-start color="primary"></ion-icon>
       <ion-label>所属部门：</ion-label>
       <ion-note item-end>{{company?.name}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="ios-mail" item-start color="primary"></ion-icon>
+      <ion-icon name="mail" item-start color="primary"></ion-icon>
       <ion-label>Email：</ion-label>
       <ion-note item-end>{{item?.email}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="ios-call" item-start color="primary"></ion-icon>
+      <ion-icon name="call" item-start color="primary"></ion-icon>
       <ion-label>电话号码：</ion-label>
       <ion-note item-end>{{item?.phone}}</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <a href="tel:13554395961">打电话</a>
+      <a href="sms:13554395961">发短信</a>
     </ion-item>
 
   </ion-list>
 
 </ion-content>
-
