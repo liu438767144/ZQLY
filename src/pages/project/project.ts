@@ -72,8 +72,7 @@ export class ProjectPage extends PageUtils {
     //搜索框为空时不匹配数据
     if (val && val.trim() != '') {
       this.projectItems = this.projectItems.filter((item) => {
-        return ((item.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || 
-        (item.username.toLowerCase().indexOf(val.toLowerCase()) > -1));
+        return item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.username.toLowerCase().indexOf(val.toLowerCase()) > -1;
     })
     }
   }

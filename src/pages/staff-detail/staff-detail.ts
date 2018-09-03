@@ -30,16 +30,4 @@ export class StaffDetailPage {
     console.log('ionViewDidLoad StaffDetailPage');
   }
 
-  sendMessage(phoneNumber: any) {
-    // console.log("sendMessage");
-    if (this.platform.is('android'))
-      window.location.href = 'sms:' + phoneNumber;
-  }
-
-  call(phoneNumber: any) {
-    // console.log("call");
-    if (this.platform.is('android'))
-      window.location.href = 'tel:' + phoneNumber;
-  }
-
 }

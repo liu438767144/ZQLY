@@ -77,8 +77,7 @@ export class StaffPage extends PageUtils {
     //搜索框为空时不匹配数据
     if (val && val.trim() != '') {
       this.staffItems = this.staffItems.filter((item) => {
-        return ((item.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || 
-        (item.deptName.toLowerCase().indexOf(val.toLowerCase()) > -1));
+        return item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || (item.deptName && item.deptName.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
