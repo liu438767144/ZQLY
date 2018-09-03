@@ -3,6 +3,8 @@ import { AlertController, IonicPage, LoadingController, ModalController, NavCont
 import { BackButtonProvider } from '../../providers/back-button/back-button';
 import { PageUtils } from '../pageUtils';
 import { Storage } from '@ionic/Storage';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -18,7 +20,7 @@ import { Storage } from '@ionic/Storage';
 })
 export class LoginPage extends PageUtils {
 
-  loginInput: loginIput;
+  loginInput: loginInput;
   isRemember: boolean = false;
 
   constructor(
@@ -29,9 +31,13 @@ export class LoginPage extends PageUtils {
     public loadingCtrl: LoadingController,
     public backButtonProvider: BackButtonProvider,
     public platform: Platform,
-    public stotage: Storage) {
+    public stotage: Storage,
+    public httpServiceProvider: HttpServiceProvider) {
+
     super(alertController, loadingCtrl);
-    this.loginInput = new loginIput();
+    //界面数据初始化
+    this.loginInput = new loginInput();
+    //注册服务
     this.platform.ready().then(() => {
       this.backButtonProvider.registerBackButtonAction(null);
     });
@@ -43,8 +49,18 @@ export class LoginPage extends PageUtils {
 
   //登录验证
   login() {
+    // this.httpServiceProvider.Login(this.loginInput.username, this.loginInput.password)
+    //   .subscribe({
+    //     next: response => {
+    //       console.log(response);
+    //       this.showLoading("正在登陆");
+    //     }, error: error => {
+    //       console.log(error);
+    //     }, complete: () => {
+    //       console.log('post complete');
+    //     }
+    //   })
 
-    // this.showLoading("正在登陆");
     if (this.loginInput.username == "admin" && this.loginInput.password == "123456") {
       // loader.dismiss();
       // 记录用户是否记住密码
@@ -59,12 +75,12 @@ export class LoginPage extends PageUtils {
     } else {
       // this.hideLoading();
       this.showAlert('失败', '账号或密码错误，请重试');
-      this.loginInput = new loginIput();
+      this.loginInput = new loginInput();
     }
   }
 }
 
-class loginIput {
-  public username: String = "";
+class loginInput {
+  public username: string = "";
   public password: string = "";
 }

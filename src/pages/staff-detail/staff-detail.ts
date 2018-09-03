@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
 /**
  * Generated class for the StaffDetailPage page.
@@ -19,15 +19,27 @@ export class StaffDetailPage {
   company: Object;
 
   constructor(
+    public platform: Platform,
     public navCtrl: NavController,
     public navParams: NavParams) {
     //获取并解析从 StaffPage 传过来的数据
     this.item = this.navParams.data;
-    this.company = this.navParams.data.company;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StaffDetailPage');
+  }
+
+  sendMessage(phoneNumber: any) {
+    // console.log("sendMessage");
+    if (this.platform.is('android'))
+      window.location.href = 'sms:' + phoneNumber;
+  }
+
+  call(phoneNumber: any) {
+    // console.log("call");
+    if (this.platform.is('android'))
+      window.location.href = 'tel:' + phoneNumber;
   }
 
 }

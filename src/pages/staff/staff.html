@@ -6,15 +6,15 @@
   <ion-toolbar no-border-top>
     <ion-searchbar (ionInput)="getItems($event)" placeholder="搜索"></ion-searchbar>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content no-padding>
+
   <ion-list>
     <ion-item *ngFor="let item of staffItems" (click)="itemClick(item)">
-      <ion-icon name="contact" item-start color="primary"></ion-icon>
+      <ion-icon item-start name="contact" color="primary"></ion-icon>
       <ion-label>{{item?.name}}</ion-label>
-      <ion-note item-end>{{item?.company.name}}</ion-note>
+      <ion-note item-end>{{item?.deptName}}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

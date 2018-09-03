@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { PageUtils } from '../pageUtils';
 
+
 /**
  * Generated class for the ProjectPage page.
  *
@@ -33,17 +34,24 @@ export class ProjectPage extends PageUtils {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectPage');
-    this.showLoading("正在加载")
-    this.init();
-    this.hideLoading();
+    this.showLoading("正在加载数据");
+    this.getproject();
   }
 
   //获取网路请求中的数据
-  init() {
-    this.httpServiceProvider.getprojectData().subscribe(data => {
-      this.projectData = data;
-      this.initItems();
-    });
+  getproject() {
+    this.httpServiceProvider.getprojectData()
+      .subscribe({
+        next: data => {
+          this.projectData = data;
+          this.initItems();
+        }, error: error => {
+          console.log(error);
+        }, complete: () => {
+          console.log("getprojectData Complete");
+          this.hideLoading();
+        }
+      });
   }
 
   //初始化显示列表
@@ -64,8 +72,9 @@ export class ProjectPage extends PageUtils {
     //搜索框为空时不匹配数据
     if (val && val.trim() != '') {
       this.projectItems = this.projectItems.filter((item) => {
-        return (item.title.indexOf(val) > -1);
-      })
+        return ((item.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || 
+        (item.username.toLowerCase().indexOf(val.toLowerCase()) > -1));
+    })
     }
   }
 }

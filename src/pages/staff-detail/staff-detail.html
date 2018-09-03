@@ -1,58 +1,48 @@
-<!--
-  Generated template for the StaffDetailPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <ion-title>详情</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content no-padding>
   <ion-list>
-    <ion-item>
-      <ion-icon name="contact" item-start color="primary"></ion-icon>
-      <ion-label>员工姓名:</ion-label>
-      <ion-note item-end>{{item?.name}}</ion-note>
+    <ion-item no-lines>
+      <ion-avatar item-start>
+        <img src="../assets/icon/favicon.ico">
+      </ion-avatar>
+      <ion-label>{{item?.name}}</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="transgender" item-start color="primary"></ion-icon>
+      <ion-icon name="transgender" item-start></ion-icon>
       <ion-label>性别：</ion-label>
-      <ion-note item-end>{{item?.username}}</ion-note>
+      <ion-note item-end color='dark'>{{item?.sex}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="calendar" item-start color="primary"></ion-icon>
+      <ion-icon name="calendar" item-start></ion-icon>
       <ion-label>出生日期：</ion-label>
-      <ion-note item-end>{{item?.website}}</ion-note>
+      <ion-note item-end color='dark'>{{item?.birth}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="git-branch" item-start color="primary"></ion-icon>
+      <ion-icon name="git-branch" item-start></ion-icon>
       <ion-label>所属部门：</ion-label>
-      <ion-note item-end>{{company?.name}}</ion-note>
+      <ion-note item-end color='dark'>{{item?.deptName}}</ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="mail" item-start color="primary"></ion-icon>
-      <ion-label>Email：</ion-label>
-      <ion-note item-end>{{item?.email}}</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="call" item-start color="primary"></ion-icon>
+      <ion-icon item-start color="primary" name="call" (click)="call(item.phone)"></ion-icon>
       <ion-label>电话号码：</ion-label>
-      <ion-note item-end>{{item?.phone}}</ion-note>
+      <ion-note item-end color='dark'>{{item?.mobile}}</ion-note>
+      <ion-icon item-end color="primary" name="text" (click)="sendMessage(item.phone)"></ion-icon>
     </ion-item>
 
     <ion-item>
-      <a href="tel:13554395961">打电话</a>
-      <a href="sms:13554395961">发短信</a>
+      <ion-icon name="mail" item-start></ion-icon>
+      <ion-label>Email：</ion-label>
+      <ion-note item-end color='dark'>{{item?.email}}</ion-note>
     </ion-item>
 
   </ion-list>
-
 </ion-content>

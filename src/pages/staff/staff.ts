@@ -32,17 +32,25 @@ export class StaffPage extends PageUtils {
   }
 
   ionViewDidLoad() {
-    this.showLoading("正在加载")
-    this.init();
-    this.hideLoading();
+    console.log('ionViewDidLoad StaffPage');
+    this.showLoading("正在加载数据");
+    this.getStaff();
   }
 
   //获取网路请求中的数据
-  init() {
-    this.httpServiceProvider.getStaffData().subscribe(data => {
-      this.staffData = data;
-      this.initItems();
-    });
+  getStaff() {
+    this.httpServiceProvider.getStaffData()
+      .subscribe({
+        next: data => {
+          this.staffData = data;
+          this.initItems();
+        }, error: error => {
+          console.log(error);
+        }, complete: () => {
+          console.log('getStaffData Complete');
+          this.hideLoading();
+        }
+      });
   }
 
   //初始化显示列表
@@ -69,7 +77,8 @@ export class StaffPage extends PageUtils {
     //搜索框为空时不匹配数据
     if (val && val.trim() != '') {
       this.staffItems = this.staffItems.filter((item) => {
-        return (item.name.indexOf(val) > -1);
+        return ((item.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || 
+        (item.deptName.toLowerCase().indexOf(val.toLowerCase()) > -1));
       })
     }
   }

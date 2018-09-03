@@ -56,7 +56,7 @@ export class BackButtonProvider {
       //标记为true
       this.backButtonPressed = true;
       //1秒后标记为false，如果退出的话，就不会执行了
-      setTimeout(() => this.backButtonPressed = false, 1000);
+      setTimeout(() => this.backButtonPressed = false, 2000);
     }
   }
 

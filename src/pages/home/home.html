@@ -1,5 +1,5 @@
 <ion-content no-padding>
-  <<ion-tabs #myTabs tabs-only tabsLayout="icon-top">
+  <ion-tabs #myTabs tabs-only tabsLayout="icon-top">
     <ion-tab *ngFor="let tabRoot of tabRoots" [root]="tabRoot.root" tabTitle="{{tabRoot.tabTitle}}" tabIcon="{{tabRoot.tabIcon}}"></ion-tab>
   </ion-tabs>
 </ion-content>
